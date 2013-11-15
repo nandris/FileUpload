@@ -113,3 +113,15 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+environments {
+	development {
+		uploadFolder = "C:\\Downloads"
+	}
+	test {
+		uploadFolder = "C:\\Downloads"
+	}
+	production {
+		uploadFolder = "C:\\Downloads"
+	}
+}
