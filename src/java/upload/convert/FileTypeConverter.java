@@ -31,8 +31,9 @@ public class FileTypeConverter {
 			 
 			 String filename = file.getOriginalFilename();
 			 String[] splitResult = filename.split("\\.");
+			 String tDir = System.getProperty("java.io.tmpdir");
 			 
-			 File tempfile = File.createTempFile(splitResult[0], "." + splitResult[1]);//("C:\\Downloads\\" + file.getOriginalFilename());
+			 File tempfile = new File(tDir + filename); //File.createTempFile(splitResult[0], "." + splitResult[1]);//("C:\\Downloads\\" + file.getOriginalFilename());
 			 
 			 outputStream = new FileOutputStream(tempfile);
 	 
