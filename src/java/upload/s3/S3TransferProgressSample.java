@@ -18,7 +18,6 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
@@ -37,6 +36,7 @@ import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ProgressEvent;
 import com.amazonaws.services.s3.model.ProgressListener;
 import com.amazonaws.services.s3.model.PutObjectRequest;
@@ -75,7 +75,7 @@ public class S3TransferProgressSample {
         createAmazonS3Bucket();
 
         PutObjectRequest request = new PutObjectRequest(
-                bucketName, file.getName(), file);
+                bucketName, file.getName(), file).withCannedAcl(CannedAccessControlList.PublicRead);
         upload = tx.upload(request);
     }
     
