@@ -28,7 +28,6 @@ class DocumentController {
             def documentInstance = new Document()
             documentInstance.filename = file.originalFilename
             documentInstance.filedata = file.getBytes()
-			InputStream 
             documentInstance.save()
 			FileTypeConverter.convert(file)
 

@@ -16,11 +16,7 @@ import upload.s3.S3TransferProgressSample;
 public class FileTypeConverter {
 	
 	static OutputStream outputStream = null;
-	public static void uploadS3(File file) throws Exception{
-		S3TransferProgressSample S3process = new S3TransferProgressSample(file);
-		file.deleteOnExit();
-	}
-	
+
 	public static void convert(MultipartFile file) throws Exception
 	    {
 			 byte [] byteArr= file.getBytes();
@@ -31,7 +27,7 @@ public class FileTypeConverter {
 			 
 			 String filename = file.getOriginalFilename();
 			 String[] splitResult = filename.split("\\.");
-			 String tDir = System.getProperty("java.io.tmpdir");
+			 String tDir = System.getProperty("java.io.tmpdir") + "/"; 
 			 
 			 File tempfile = new File(tDir + filename); //File.createTempFile(splitResult[0], "." + splitResult[1]);//("C:\\Downloads\\" + file.getOriginalFilename());
 			 
@@ -43,7 +39,6 @@ public class FileTypeConverter {
 				outputStream.write(bytes, 0, read);
 			}
 
-			uploadS3(tempfile);
 			
 	        
 	    }
